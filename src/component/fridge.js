@@ -5,7 +5,7 @@ import Lists from "./lists";
 const Fridge = () => {
 
     const [types, setTypes] = useState([]); 
-    const [items, setItems] = useState([]); 
+    const [items, setItems] = useState({}); 
 
     const addType = (type) => {
         if (!types.find(item => item === type)) setTypes([...types, ...[type]]);
@@ -14,11 +14,12 @@ const Fridge = () => {
     const addItem = (data) => {
         console.log(items)
         addType(data.category);
-        if(items.find(item => item.name.toLowerCase() === data.name.toLowerCase())) {
-            alert('Item already exists');
-            return;
-        }
-        setItems([...items, ...[data]])
+        // if(items.find(item => item.name.toLowerCase() === data.name.toLowerCase())) {
+        //     alert('Item already exists');
+        //     return;
+        // }
+        items[data.category] = [...[data]];
+        setItems(items)
     }
 
   return(<>

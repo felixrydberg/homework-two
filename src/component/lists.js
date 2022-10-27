@@ -2,9 +2,12 @@ import Ul from "./lists/ul";
 import Buttons from "./lists/buttons";
 
 const Lists = (props) => {
+
+  const types = props.types.map((type, index) => <Ul key={index} item={props.items[type]}></Ul>)
+
   return <>
-    <Buttons list={props.types}></Buttons>
-    <Ul list={props.types} items={props.items}></Ul>
+    <Buttons types={props.types}></Buttons>
+    {types}
   </>;
 };
 
