@@ -1,13 +1,19 @@
 import Ul from "./lists/ul";
 import Buttons from "./lists/buttons";
+import { useState } from "react";
 
 const Lists = (props) => {
-
-  const types = props.types.map((type, index) => <Ul key={index} item={props.items[type]}></Ul>)
-
+  const [currentDisplay, setDisplay] = useState('ALL')
+  const showType = (type) => {
+    setDisplay(type);
+  }
   return <>
-    <Buttons types={props.types}></Buttons>
-    {types}
+    <Buttons types={props.types} callback={showType}></Buttons>
+    {props.types.map((type, index) => {
+      if(currentDisplay === 'ALL') return <Ul key={index} item={props.items[type]}></Ul>
+      if(currentDisplay === type) return <Ul key={index} item={props.items[type]}></Ul>
+      return <></>
+    })}
   </>;
 };
 

@@ -12,17 +12,18 @@ const Fridge = () => {
     }
 
     const addItem = (data) => {
-        console.log(items)
         addType(data.category);
-        // if(items.find(item => item.name.toLowerCase() === data.name.toLowerCase())) {
-        //     alert('Item already exists');
-        //     return;
-        // }
-        items[data.category] = [...[data]];
+        if(!items[data.category]) items[data.category] = [];
+        if(items[data.category].find(item => item.name.toLowerCase() === data.name.toLowerCase())) {
+            alert('Item already exists');
+            return;
+        }
+        items[data.category].push(data)
         setItems(items)
     }
 
   return(<>
+    {types}
     <Inputs callback={addItem}></Inputs>
     <Lists types={types} items={items}></Lists>
   </>);
