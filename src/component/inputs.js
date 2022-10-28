@@ -18,10 +18,10 @@ const Inputs = (props) => {
     }
 
   return (<form onSubmit={onSubmit}>
-    <input onChange={event => setName(event.target.value)} type="text" value={name} placeholder="name"></input>
-    <input onChange={event => setAmount(event.target.value)} type="number" value={amount} placeholder="amount"></input>
-    <input onChange={event => setCategory(event.target.value)} type="text" value={category} placeholder="category"></input>
-    <input onChange={event => setDate(event.target.value)} type="date" value={date} placeholder="date"></input>
+    <input required onChange={event => setName(event.target.value)} type="text" value={name} placeholder="name"></input>
+    <input required onChange={event => setAmount(event.target.value)} type="number" value={amount} placeholder="amount"></input>
+    <input required onChange={event => setCategory(event.target.value)} type="text" value={category} placeholder="category"></input>
+    <input required onChange={event => setDate(event.target.value)} type="date" value={date} placeholder="date"></input>
     <button type="submit">Add</button>
   </form>);
 };

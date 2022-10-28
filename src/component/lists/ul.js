@@ -1,14 +1,23 @@
 const Ul = (props) => {
-  return <ul>
+  return (
+    <div>
+      <h1>Category: {props.type}</h1>
+      <ul>
         {props.item.map((item, index) => {
-            return <li key={index}>
-                <h1>{item.name}</h1>
-                <h2>{item.category}</h2>
-                <h2>{item.amount}</h2>
-                <h2>{item.date}</h2>
+          return (
+            <li key={index}>
+              <h2>{item.name}</h2>
+              <div>
+                <h3>Category: {item.category}</h3>
+                <h3>Amount: {item.amount}</h3>
+                <h3>Date: {item.date}</h3>
+              </div>
             </li>
+          );
         })}
-    </ul>
-}
+      </ul>
+    </div>
+  );
+};
 
 export default Ul;
